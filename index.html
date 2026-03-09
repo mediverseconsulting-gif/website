@@ -15,7 +15,7 @@
 
         :root {
             --primary: #00695c;
-            --primary-dark: #00695c;
+            --primary-dark: #004d40;
             --primary-light: #e0f2f1;
             --secondary: #26a69a;
             --secondary-light: #b2dfdb;
@@ -24,6 +24,7 @@
             --light: #f8fafc;
             --gray: #64748b;
             --success: #10b981;
+            --section-alt: #f5f5f5;
         }
 
         body {
@@ -33,14 +34,14 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Navigation - GREEN HEADER */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--primary);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,105,92,0.15);
+            box-shadow: 0 4px 15px rgba(0,105,92,0.3);
             z-index: 1000;
             padding: 1rem 0;
         }
@@ -57,7 +58,7 @@
         .logo {
             font-size: 1.75rem;
             font-weight: 800;
-            color: var(--primary);
+            color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -67,28 +68,32 @@
         .logo img {
             height: 50px;
             width: auto;
+            filter: brightness(0) invert(1);
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: white;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            opacity: 0.9;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            opacity: 1;
+            color: var(--secondary-light);
         }
 
         .cta-button {
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: var(--primary);
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
@@ -99,17 +104,17 @@
         }
 
         .cta-button:hover {
-            background: var(--accent);
+            background: var(--secondary-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,105,92,0.3);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.3);
         }
 
-        /* Hero Section */
+        /* Hero Section - White background */
         .hero {
             margin-top: 80px;
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            background: white;
+            color: var(--dark);
             position: relative;
             overflow: hidden;
         }
@@ -121,8 +126,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
-            opacity: 0.3;
+            background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);
+            opacity: 0.5;
+            z-index: 0;
         }
 
         .hero-container {
@@ -141,18 +147,35 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: var(--primary);
         }
 
         .hero-content p {
             font-size: 1.25rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            color: var(--gray);
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,105,92,0.3);
         }
 
         .btn-secondary {
@@ -162,12 +185,13 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
+            border: 2px solid var(--primary);
             transition: all 0.3s;
         }
 
         .btn-secondary:hover {
+            background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .hero-image {
@@ -177,7 +201,7 @@
         .hero-image img {
             width: 100%;
             border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 50px rgba(0,105,92,0.2);
         }
 
         .stats {
@@ -189,20 +213,25 @@
 
         .stat-item {
             text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,105,92,0.1);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
             display: block;
+            color: var(--primary);
         }
 
         .stat-label {
             font-size: 0.9rem;
-            opacity: 0.9;
+            color: var(--gray);
         }
 
-        /* Features Section */
+        /* Features Section - Light Teal Background */
         .features {
             padding: 6rem 2rem;
             background: var(--primary-light);
@@ -295,7 +324,7 @@
             color: var(--success);
         }
 
-        /* AI Section */
+        /* AI Section - White Background */
         .ai-section {
             padding: 6rem 2rem;
             background: white;
@@ -333,11 +362,20 @@
             display: flex;
             gap: 1rem;
             align-items: flex-start;
+            padding: 1rem;
+            background: var(--primary-light);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .ai-feature-item:hover {
+            background: var(--secondary-light);
+            transform: translateX(5px);
         }
 
         .ai-feature-item i {
             font-size: 1.5rem;
-            color: var(--secondary);
+            color: var(--primary);
             margin-top: 0.25rem;
         }
 
@@ -359,7 +397,7 @@
         .ai-image img {
             width: 100%;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,105,92,0.15);
         }
 
         .ai-badge {
@@ -383,10 +421,10 @@
             opacity: 0.9;
         }
 
-        /* Gallery Section */
+        /* Gallery Section - Light Gray Background */
         .gallery {
             padding: 6rem 2rem;
-            background: var(--primary-light);
+            background: var(--section-alt);
         }
 
         .gallery-grid {
@@ -402,6 +440,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.3s;
             height: 250px;
+            background: white;
         }
 
         .gallery-item:hover {
@@ -420,16 +459,22 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,105,92,0.9), transparent);
+            background: linear-gradient(to top, rgba(0,105,92,0.95), transparent);
             padding: 2rem 1rem 1rem;
             color: white;
         }
 
         .gallery-overlay h4 {
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
-        /* Reports Section */
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Reports Section - White Background */
         .reports {
             padding: 6rem 2rem;
             background: white;
@@ -457,13 +502,14 @@
         }
 
         .report-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0,105,92,0.3);
         }
 
         .report-card i {
             font-size: 3rem;
             margin-bottom: 1rem;
+            display: block;
         }
 
         .report-card h3 {
@@ -473,16 +519,35 @@
         }
 
         .report-card p {
-            opacity: 0.9;
+            opacity: 0.95;
             font-size: 0.9rem;
+            line-height: 1.6;
         }
 
-        /* CTA Section */
+        /* CTA Section - Green Gradient */
         .cta-section {
             padding: 6rem 2rem;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-section > * {
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section h2 {
@@ -540,9 +605,9 @@
             color: var(--primary);
         }
 
-        /* Footer */
+        /* Footer - Dark Green */
         footer {
-            background: var(--primary);
+            background: var(--primary-dark);
             color: white;
             padding: 3rem 2rem 1rem;
         }
@@ -560,10 +625,11 @@
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--secondary-light);
         }
 
         .footer-section p, .footer-section a {
-            color: var(--secondary-light);
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
             line-height: 2;
         }
@@ -576,7 +642,7 @@
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: var(--secondary-light);
+            color: rgba(255,255,255,0.6);
         }
 
         .social-links {
@@ -594,6 +660,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            color: white;
         }
 
         .social-links a:hover {
@@ -646,7 +713,7 @@
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation - GREEN HEADER -->
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
@@ -663,14 +730,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - WHITE BACKGROUND -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Revolutionize Your Health Camp Management</h1>
                 <p>Comprehensive software solution for managing vitals, medical history, ECG, X-ray, audiometry, PFT, and more. Powered by AI for intelligent health insights.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="cta-button">Request Demo</a>
+                    <a href="#contact" class="btn-primary">Request Demo</a>
                     <a href="#features" class="btn-secondary">Learn More</a>
                 </div>
                 <div class="stats">
@@ -694,7 +761,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features Section - LIGHT TEAL BACKGROUND -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
@@ -789,7 +856,7 @@
         </div>
     </section>
 
-    <!-- AI Analysis Section -->
+    <!-- AI Section - WHITE BACKGROUND -->
     <section class="ai-section" id="ai-analysis">
         <div class="ai-container">
             <div class="ai-content">
@@ -843,7 +910,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section - LIGHT GRAY BACKGROUND -->
     <section class="gallery" id="gallery">
         <div class="container">
             <div class="section-header">
@@ -897,7 +964,7 @@
         </div>
     </section>
 
-    <!-- Reports Section -->
+    <!-- Reports Section - WHITE BACKGROUND -->
     <section class="reports" id="reports">
         <div class="reports-container">
             <div class="section-header">
@@ -929,7 +996,7 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - GREEN GRADIENT -->
     <section class="cta-section" id="contact">
         <h2>Ready to Transform Your Health Camps?</h2>
         <p>Join hundreds of healthcare organizations already using MediVerse to deliver better care and insights.</p>
@@ -939,7 +1006,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - DARK GREEN -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
@@ -997,9 +1064,9 @@
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 2px 20px rgba(0,105,92,0.2)';
+                nav.style.boxShadow = '0 4px 20px rgba(0,105,92,0.4)';
             } else {
-                nav.style.boxShadow = '0 2px 10px rgba(0,105,92,0.1)';
+                nav.style.boxShadow = '0 4px 15px rgba(0,105,92,0.3)';
             }
         });
 

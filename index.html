@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCamp Pro - Comprehensive Health Camp Management Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #06b6d4;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li i {
+            color: var(--success);
+        }
+
+        /* AI Section */
+        .ai-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ai-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .ai-content > p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .ai-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ai-feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .ai-feature-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 0.25rem;
+        }
+
+        .ai-feature-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--dark);
+        }
+
+        .ai-feature-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .ai-image {
+            position: relative;
+        }
+
+        .ai-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .ai-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--accent);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .ai-badge h4 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .ai-badge p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1rem 1rem;
+            color: white;
+        }
+
+        .gallery-overlay h4 {
+            font-weight: 600;
+        }
+
+        /* Reports Section */
+        .reports {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .reports-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .report-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .report-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .report-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-card p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #334155;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container,
+            .ai-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card,
+        .gallery-item,
+        .report-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-heartbeat"></i>
+                HealthCamp Pro
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#ai-analysis">AI Analysis</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#contact" class="cta-button">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Revolutionize Your Health Camp Management</h1>
+                <p>Comprehensive software solution for managing vitals, medical history, ECG, X-ray, audiometry, PFT, and more. Powered by AI for intelligent health insights.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button">Request Demo</a>
+                    <a href="#features" class="btn-secondary">Learn More</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Camps Managed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Patients Screened</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/375201eee-44f9-4596-b07f-ebaa2a8082764940.png" alt="Health Camp Screening">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Health Screening Modules</h2>
+                <p>Complete digital solution for all your health camp requirements with seamless data collection and management</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Vitals Management</h3>
+                    <p>Digital recording and tracking of essential vital signs with automatic alerts for abnormal readings.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Blood Pressure & Heart Rate</li>
+                        <li><i class="fas fa-check"></i> Temperature & SpO2</li>
+                        <li><i class="fas fa-check"></i> BMI & Weight Tracking</li>
+                        <li><i class="fas fa-check"></i> Real-time Monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>Medical History</h3>
+                    <p>Comprehensive digital health records with past medical history, medications, and allergies.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Digital Health Records</li>
+                        <li><i class="fas fa-check"></i> Family History Tracking</li>
+                        <li><i class="fas fa-check"></i> Medication History</li>
+                        <li><i class="fas fa-check"></i> Allergy Alerts</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3>ECG Integration</h3>
+                    <p>12-lead ECG recording and analysis with instant digital reports and cardiologist review.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 12-Lead ECG Recording</li>
+                        <li><i class="fas fa-check"></i> Automated Analysis</li>
+                        <li><i class="fas fa-check"></i> Digital Storage</li>
+                        <li><i class="fas fa-check"></i> Quick Report Generation</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3>X-Ray Management</h3>
+                    <p>Digital X-ray imaging integration with PACS compatibility and radiologist reporting.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Digital Image Capture</li>
+                        <li><i class="fas fa-check"></i> PACS Integration</li>
+                        <li><i class="fas fa-check"></i> Cloud Storage</li>
+                        <li><i class="fas fa-check"></i> Radiologist Reports</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ear-listen"></i>
+                    </div>
+                    <h3>Audiometry Testing</h3>
+                    <p>Complete hearing assessment with pure tone audiometry and speech testing capabilities.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Pure Tone Audiometry</li>
+                        <li><i class="fas fa-check"></i> Speech Audiometry</li>
+                        <li><i class="fas fa-check"></i> Tympanometry</li>
+                        <li><i class="fas fa-check"></i> Hearing Loss Classification</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Pulmonary Function Test</h3>
+                    <p>Advanced PFT with spirometry, lung volume measurements, and diffusion capacity testing.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Spirometry</li>
+                        <li><i class="fas fa-check"></i> FVC & FEV1 Analysis</li>
+                        <li><i class="fas fa-check"></i> Peak Flow Measurement</li>
+                        <li><i class="fas fa-check"></i> Obstructive/Restrictive Pattern Detection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Analysis Section -->
+    <section class="ai-section" id="ai-analysis">
+        <div class="ai-container">
+            <div class="ai-content">
+                <h2>AI-Powered Health Analytics</h2>
+                <p>Leverage the power of artificial intelligence to analyze camp data, identify health trends, and generate predictive insights for population health management.</p>
+                <div class="ai-features">
+                    <div class="ai-feature-item">
+                        <i class="fas fa-brain"></i>
+                        <div>
+                            <h4>Predictive Risk Assessment</h4>
+                            <p>Identify high-risk individuals based on combined health parameters and medical history</p>
+                        </div>
+                    </div>
+                    <div class="ai-feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>Population Health Trends</h4>
+                            <p>Analyze camp-wide data to identify prevalent health conditions and patterns</p>
+                        </div>
+                    </div>
+                    <div class="ai-feature-item">
+                        <i class="fas fa-robot"></i>
+                        <div>
+                            <h4>Automated Abnormality Detection</h4>
+                            <p>AI algorithms flag abnormal ECG, PFT, and audiometry results instantly</p>
+                        </div>
+                    </div>
+                    <div class="ai-feature-item">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h4>Smart Recommendations</h4>
+                            <p>Generate personalized health recommendations and referral suggestions</p>
+                        </div>
+                    </div>
+                    <div class="ai-feature-item">
+                        <i class="fas fa-database"></i>
+                        <div>
+                            <h4>Data-Driven Insights</h4>
+                            <p>Comprehensive analytics dashboard with visualizations and exportable reports</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-image">
+                <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/175201eee-44f9-4596-b07f-ebaa2a8082765534.png" alt="Healthcare Data Collection">
+                <div class="ai-badge">
+                    <h4>AI</h4>
+                    <p>Powered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Health Camp in Action</h2>
+                <p>See our software being used in real health camp scenarios across various locations</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/075201eee-44f9-4596-b07f-ebaa2a8082769548.png" alt="Health Screening Camp">
+                    <div class="gallery-overlay">
+                        <h4>Community Health Screening</h4>
+                        <p>Comprehensive health checkups</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/475201eee-44f9-4596-b07f-ebaa2a8082768339.png" alt="Health Camp Registration">
+                    <div class="gallery-overlay">
+                        <h4>Digital Registration</h4>
+                        <p>Paperless patient onboarding</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/575201eee-44f9-4596-b07f-ebaa2a8082764245.png" alt="Mobile Health Clinic">
+                    <div class="gallery-overlay">
+                        <h4>Mobile Health Unit</h4>
+                        <p>Reaching remote areas</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/275201eee-44f9-4596-b07f-ebaa2a8082768478.png" alt="Blood Sugar Testing">
+                    <div class="gallery-overlay">
+                        <h4>Point-of-Care Testing</h4>
+                        <p>Instant results integration</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/475201eee-44f9-4596-b07f-ebaa2a8082761612.png" alt="ECG Testing">
+                    <div class="gallery-overlay">
+                        <h4>Portable ECG</h4>
+                        <p>Digital ECG recording</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/275201eee-44f9-4596-b07f-ebaa2a8082769448.png" alt="Mobile X-Ray">
+                    <div class="gallery-overlay">
+                        <h4>Mobile X-Ray Unit</h4>
+                        <p>On-site imaging services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section class="reports" id="reports">
+        <div class="reports-container">
+            <div class="section-header">
+                <h2>Comprehensive Reporting</h2>
+                <p>Generate detailed individual and camp-wide reports with just a few clicks</p>
+            </div>
+            <div class="reports-grid">
+                <div class="report-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Individual Health Reports</h3>
+                    <p>Detailed PDF reports for each patient with all test results and recommendations</p>
+                </div>
+                <div class="report-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Camp Summary Reports</h3>
+                    <p>Aggregate statistics and health trends for the entire camp</p>
+                </div>
+                <div class="report-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Abnormal Findings Report</h3>
+                    <p>Consolidated list of patients requiring follow-up or referral</p>
+                </div>
+                <div class="report-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Epidemiological Analysis</h3>
+                    <p>Disease prevalence and risk factor analysis for population health</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Ready to Transform Your Health Camps?</h2>
+        <p>Join hundreds of healthcare organizations already using HealthCamp Pro to deliver better care and insights.</p>
+        <div class="cta-buttons">
+            <a href="mailto:info@healthcamppro.com" class="btn-white">Schedule a Demo</a>
+            <a href="tel:+1234567890" class="btn-outline"><i class="fas fa-phone"></i> Contact Sales</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HealthCamp Pro</h3>
+                <p>Empowering healthcare providers with intelligent camp management solutions for better population health outcomes.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#features">Features</a></p>
+                <p><a href="#ai-analysis">AI Analytics</a></p>
+                <p><a href="#gallery">Gallery</a></p>
+                <p><a href="#reports">Reports</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Modules</h3>
+                <p><a href="#">Vitals Management</a></p>
+                <p><a href="#">ECG Integration</a></p>
+                <p><a href="#">X-Ray & Imaging</a></p>
+                <p><a href="#">Audiometry & PFT</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@healthcamppro.com</p>
+                <p><i class="fas fa-phone"></i> +1 (234) 567-890</p>
+                <p><i class="fas fa-location-dot"></i> 123 Healthcare Ave, Medical City</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 HealthCamp Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Animate stats on scroll
+        const stats = document.querySelectorAll('.stat-number');
+        let animated = false;
+
+        const animateStats = () => {
+            const heroSection = document.querySelector('.hero');
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            
+            if (heroBottom < window.innerHeight && !animated) {
+                stats.forEach(stat => {
+                    const target = parseInt(stat.textContent);
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            stat.textContent = stat.textContent;
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : stat.textContent.includes('%') ? '%' : 'K+');
+                        }
+                    }, 16);
+                });
+                animated = true;
+            }
+        };
+
+        window.addEventListener('scroll', animateStats);
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .gallery-item, .report-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

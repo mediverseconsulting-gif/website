@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthCamp Pro - Comprehensive Health Camp Management Software</title>
+    <title>MediVerse - Comprehensive Health Camp Management Software</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,10 +14,12 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #06b6d4;
-            --accent: #8b5cf6;
+            --primary: #00695c;
+            --primary-dark: #00695c;
+            --primary-light: #e0f2f1;
+            --secondary: #26a69a;
+            --secondary-light: #b2dfdb;
+            --accent: #00897b;
             --dark: #1e293b;
             --light: #f8fafc;
             --gray: #64748b;
@@ -38,7 +40,7 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,105,92,0.15);
             z-index: 1000;
             padding: 1rem 0;
         }
@@ -53,13 +55,18 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
@@ -92,16 +99,16 @@
         }
 
         .cta-button:hover {
-            background: var(--primary-dark);
+            background: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(0,105,92,0.3);
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -198,7 +205,7 @@
         /* Features Section */
         .features {
             padding: 6rem 2rem;
-            background: var(--light);
+            background: var(--primary-light);
         }
 
         .container {
@@ -215,7 +222,7 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--primary);
         }
 
         .section-header p {
@@ -242,8 +249,8 @@
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,105,92,0.15);
+            border-color: var(--secondary);
         }
 
         .feature-icon {
@@ -263,7 +270,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--primary);
         }
 
         .feature-card p {
@@ -307,7 +314,7 @@
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: var(--primary);
         }
 
         .ai-content > p {
@@ -330,14 +337,14 @@
 
         .ai-feature-item i {
             font-size: 1.5rem;
-            color: var(--accent);
+            color: var(--secondary);
             margin-top: 0.25rem;
         }
 
         .ai-feature-item h4 {
             font-weight: 700;
             margin-bottom: 0.25rem;
-            color: var(--dark);
+            color: var(--primary);
         }
 
         .ai-feature-item p {
@@ -359,11 +366,11 @@
             position: absolute;
             bottom: -20px;
             left: -20px;
-            background: var(--accent);
+            background: var(--primary);
             color: white;
             padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 10px 30px rgba(0,105,92,0.3);
         }
 
         .ai-badge h4 {
@@ -379,7 +386,7 @@
         /* Gallery Section */
         .gallery {
             padding: 6rem 2rem;
-            background: var(--light);
+            background: var(--primary-light);
         }
 
         .gallery-grid {
@@ -399,7 +406,7 @@
 
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,105,92,0.2);
         }
 
         .gallery-item img {
@@ -413,7 +420,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,105,92,0.9), transparent);
             padding: 2rem 1rem 1rem;
             color: white;
         }
@@ -451,7 +458,7 @@
 
         .report-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 20px 40px rgba(0,105,92,0.3);
         }
 
         .report-card i {
@@ -535,7 +542,7 @@
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--primary);
             color: white;
             padding: 3rem 2rem 1rem;
         }
@@ -556,7 +563,7 @@
         }
 
         .footer-section p, .footer-section a {
-            color: #94a3b8;
+            color: var(--secondary-light);
             text-decoration: none;
             line-height: 2;
         }
@@ -568,8 +575,8 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--secondary-light);
         }
 
         .social-links {
@@ -581,7 +588,7 @@
         .social-links a {
             width: 40px;
             height: 40px;
-            background: #334155;
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -590,7 +597,7 @@
         }
 
         .social-links a:hover {
-            background: var(--primary);
+            background: var(--secondary);
             transform: translateY(-3px);
         }
 
@@ -643,8 +650,8 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-heartbeat"></i>
-                HealthCamp Pro
+                <img src="your-logo.png" alt="MediVerse Logo">
+                MediVerse
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
@@ -682,7 +689,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/375201eee-44f9-4596-b07f-ebaa2a8082764940.png" alt="Health Camp Screening">
+                <img src="health-camp-screening.jpg" alt="Health Camp Screening">
             </div>
         </div>
     </section>
@@ -827,7 +834,7 @@
                 </div>
             </div>
             <div class="ai-image">
-                <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/175201eee-44f9-4596-b07f-ebaa2a8082765534.png" alt="Healthcare Data Collection">
+                <img src="healthcare-data-collection.jpg" alt="Healthcare Data Collection">
                 <div class="ai-badge">
                     <h4>AI</h4>
                     <p>Powered</p>
@@ -845,42 +852,42 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/075201eee-44f9-4596-b07f-ebaa2a8082769548.png" alt="Health Screening Camp">
+                    <img src="health-camp-screening.jpg" alt="Health Screening Camp">
                     <div class="gallery-overlay">
                         <h4>Community Health Screening</h4>
                         <p>Comprehensive health checkups</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/475201eee-44f9-4596-b07f-ebaa2a8082768339.png" alt="Health Camp Registration">
+                    <img src="healthcare-data-collection.jpg" alt="Health Camp Registration">
                     <div class="gallery-overlay">
                         <h4>Digital Registration</h4>
                         <p>Paperless patient onboarding</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/575201eee-44f9-4596-b07f-ebaa2a8082764245.png" alt="Mobile Health Clinic">
+                    <img src="mobile-health-clinic.jpg" alt="Mobile Health Clinic">
                     <div class="gallery-overlay">
                         <h4>Mobile Health Unit</h4>
                         <p>Reaching remote areas</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/275201eee-44f9-4596-b07f-ebaa2a8082768478.png" alt="Blood Sugar Testing">
+                    <img src="blood-sugar-testing.jpg" alt="Blood Sugar Testing">
                     <div class="gallery-overlay">
                         <h4>Point-of-Care Testing</h4>
                         <p>Instant results integration</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/475201eee-44f9-4596-b07f-ebaa2a8082761612.png" alt="ECG Testing">
+                    <img src="ecg-testing.jpg" alt="ECG Testing">
                     <div class="gallery-overlay">
                         <h4>Portable ECG</h4>
                         <p>Digital ECG recording</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://image.qwenlm.ai/public_source/65893c56-d13b-499d-a33b-3928b61e5244/275201eee-44f9-4596-b07f-ebaa2a8082769448.png" alt="Mobile X-Ray">
+                    <img src="mobile-xray.jpg" alt="Mobile X-Ray">
                     <div class="gallery-overlay">
                         <h4>Mobile X-Ray Unit</h4>
                         <p>On-site imaging services</p>
@@ -925,9 +932,9 @@
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <h2>Ready to Transform Your Health Camps?</h2>
-        <p>Join hundreds of healthcare organizations already using HealthCamp Pro to deliver better care and insights.</p>
+        <p>Join hundreds of healthcare organizations already using MediVerse to deliver better care and insights.</p>
         <div class="cta-buttons">
-            <a href="mailto:info@healthcamppro.com" class="btn-white">Schedule a Demo</a>
+            <a href="mailto:info@mediverse.com" class="btn-white">Schedule a Demo</a>
             <a href="tel:+1234567890" class="btn-outline"><i class="fas fa-phone"></i> Contact Sales</a>
         </div>
     </section>
@@ -936,7 +943,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>HealthCamp Pro</h3>
+                <h3>MediVerse</h3>
                 <p>Empowering healthcare providers with intelligent camp management solutions for better population health outcomes.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -961,13 +968,13 @@
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-envelope"></i> info@healthcamppro.com</p>
+                <p><i class="fas fa-envelope"></i> info@mediverse.com</p>
                 <p><i class="fas fa-phone"></i> +1 (234) 567-890</p>
                 <p><i class="fas fa-location-dot"></i> 123 Healthcare Ave, Medical City</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 HealthCamp Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; 2026 MediVerse. All rights reserved. | Privacy Policy | Terms of Service</p>
         </div>
     </footer>
 
@@ -990,9 +997,9 @@
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,105,92,0.2)';
             } else {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                nav.style.boxShadow = '0 2px 10px rgba(0,105,92,0.1)';
             }
         });
 
